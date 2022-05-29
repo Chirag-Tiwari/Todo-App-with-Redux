@@ -10,6 +10,9 @@ const TodoList: FC<TodoListProps> = () => {
   console.log("list", list);
   return (
     <div>
+      <h2 className="text-lg font-medium leading-6 text-gray-900">
+        Things to do
+      </h2>
       {list.map((element: any) => (
         <Activities
           data={element.title}

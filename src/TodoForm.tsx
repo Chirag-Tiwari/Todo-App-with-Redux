@@ -9,6 +9,14 @@ type TodoFormProps = {};
 
 const TodoForm: FC<TodoFormProps> = () => {
   const [inputChange, updateInputChange] = useState<any>();
+  const [showTodoForm, updateShowTodoForm] = useState<boolean>(false);
+  const isTodoForm = () => {
+    updateShowTodoForm(true);
+  };
+
+  const removeTodoForm = () => {
+    updateShowTodoForm(false);
+  };
 
   const changeInput = (event: any) => {
     updateInputChange(event.target.value);
@@ -21,17 +29,26 @@ const TodoForm: FC<TodoFormProps> = () => {
   };
 
   return (
-    <div>
-      <h1 className="font-semibold text-lg">Create a Todo</h1>
-      <input
-        placeholder="enter things to do"
-        value={inputChange}
-        onChange={changeInput}
-        className="border border-gray-500 p-2 rounded-md"
-      />
-      <Button onClick={addTodo}>save</Button>
-      <Button theme="secondary">cancel</Button>
-    </div>
+    <>
+      <Button onClick={isTodoForm}>Add a todo +</Button>
+      {showTodoForm && (
+        <div className="bg-white shadow sm:rounded-lg px-4 py-5 sm:p-6">
+          <h1 className="font-semibold text-lg">Create a Todo</h1>
+          <input
+            placeholder="enter things to do"
+            value={inputChange}
+            onChange={changeInput}
+            className="border border-gray-500 p-2 rounded-md"
+          />
+          <div className="flex">
+            <Button onClick={addTodo}>save</Button>
+            <Button onClick={removeTodoForm} theme="secondary">
+              cancel
+            </Button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

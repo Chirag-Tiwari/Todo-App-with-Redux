@@ -5,7 +5,7 @@ import { TODO_MARKED_DONE, TODO_MARKED_UNDONE } from "./Actions";
 
 type ActivitiesProps = {
   checked: boolean;
-  id: string;
+  id: number;
   data: string;
 };
 

@@ -12,10 +12,14 @@ function App() {
     <div>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<TodoPage />} />
-          <Route path="/upgrade" element={<Upgrade />} />
-        </Routes>
+        <div className="mx-auto max-w-7xl">
+          <h1 className="text-3xl font-bold leading-tight text-gray-900">
+            Things to get done
+          </h1>
+          <Routes>
+            <Route path="/" element={<TodoPage />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );
