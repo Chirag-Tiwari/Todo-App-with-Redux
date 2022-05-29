@@ -13,14 +13,16 @@ const TodoList: FC<TodoListProps> = () => {
       <h2 className="text-lg font-medium leading-6 text-gray-900">
         Things to do
       </h2>
-      {list.map((element: any) => (
-        <Activities
-          data={element.title}
-          checked={false}
-          id={element.id}
-          key={element.id}
-        />
-      ))}
+      <div className="space-y-2 mt-5">
+        {list.map((element: any) => (
+          <Activities
+            data={element.title}
+            checked={false}
+            id={element.id}
+            key={element.id}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -10,18 +10,18 @@ const Header: FC<HeaderProps> = () => {
   const doneCount = useSelector(unDoneCounter);
 
   return (
-    <div className="flex justify-between border border-gray-700 p-2">
+    <div className="flex justify-evenly border border-gray-700 p-2">
       <Link to="/">
         <h1 className=" text-xl font-semibold pl-6">XTodo</h1>
       </Link>
-      <h1>Todo Count:{todoCount}</h1>
-      <h1>Done Count:{doneCount}</h1>
-      <Link
+      <h1 className="italic font-bold">Todo Count:{todoCount}</h1>
+      <h1 className="italic font-bold">Done Count:{doneCount}</h1>
+      {/* <Link
         to="/upgrade"
         className="border border-gray-500 px-4 py-1 rounded-md hover:bg-gray-200"
       >
         Upgrade
-      </Link>
+      </Link> */}
     </div>
   );
 };

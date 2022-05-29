@@ -12,7 +12,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Header />
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-7xl py-10">
           <h1 className="text-3xl font-bold leading-tight text-gray-900">
             Things to get done
           </h1>

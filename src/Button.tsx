@@ -8,11 +8,11 @@ type ButtonProps = {
 
 const Button: FC<ButtonProps> = ({ theme, children, ...rest }) => {
   const buttonClasses = cn(
-    "border p-2 rounded-md bg-yellow-500 border-indigo-700 text-white",
+    "border p-2 rounded-md border-indigo-700 text-white",
     {
       "bg-yellow-500 border-indigo-700 text-white rounded-3xl":
         theme === "primary",
-      " border-gray-400": theme === "secondary",
+      " border-gray-400 text-black font-semibold": theme === "secondary",
     }
   );
   // let themeClass = "bg-yellow-500 border-indigo-700 text-white";

@@ -11,7 +11,7 @@ const DoneList: FC<DoneListProps> = () => {
 
   return (
     <div>
-      <h2 className="text-lg font-medium leading-6 text-gray-900">
+      <h2 className="text-lg font-medium leading-6 text-gray-900 my-5">
         Things done
       </h2>
       {list.map((element: any) => (

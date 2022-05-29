@@ -26,13 +26,17 @@ const TodoForm: FC<TodoFormProps> = () => {
 
   const addTodo = () => {
     dispatch(TODO_ADDED(inputChange));
+    updateInputChange("");
+    updateShowTodoForm(false);
   };
 
   return (
     <>
-      <Button onClick={isTodoForm}>Add a todo +</Button>
+      <div className="my-5">
+        <Button onClick={isTodoForm}>Add a todo +</Button>
+      </div>
       {showTodoForm && (
-        <div className="bg-white shadow sm:rounded-lg px-4 py-5 sm:p-6">
+        <div className="bg-white shadow sm:rounded-lg px-4 py-5 sm:p-6 space-y-5">
           <h1 className="font-semibold text-lg">Create a Todo</h1>
           <input
             placeholder="enter things to do"
@@ -40,7 +44,7 @@ const TodoForm: FC<TodoFormProps> = () => {
             onChange={changeInput}
             className="border border-gray-500 p-2 rounded-md"
           />
-          <div className="flex">
+          <div className="flex space-x-2">
             <Button onClick={addTodo}>save</Button>
             <Button onClick={removeTodoForm} theme="secondary">
               cancel
