@@ -1,7 +1,6 @@
 import TodoPage from "./TodoPage";
 import { uniqueId } from "lodash";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Upgrade from "./Upgrade";
 import Header from "./Header";
 
 const id = uniqueId();

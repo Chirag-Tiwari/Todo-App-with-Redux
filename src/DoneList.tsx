@@ -1,8 +1,7 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
-import Activities from "./Activities";
+import TodoActivities from "./TodoActivities";
 import { undoneSelector } from "./Selectors";
-import TodoForm from "./TodoForm";
 
 type DoneListProps = {};
 
@@ -15,7 +14,7 @@ const DoneList: FC<DoneListProps> = () => {
         Things done
       </h2>
       {list.map((element: any) => (
-        <Activities
+        <TodoActivities
           data={element.title}
           key={element.id}
           id={element.id}

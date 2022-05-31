@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TODO_ADDED } from "./Actions";
+import { todoAdded } from "./Actions";
 import Button from "./Button";
-import { todo } from "./models/Todo";
 
 type TodoFormProps = {};
 
@@ -25,7 +24,7 @@ const TodoForm: FC<TodoFormProps> = () => {
   const dispatch = useDispatch();
 
   const addTodo = () => {
-    dispatch(TODO_ADDED(inputChange));
+    dispatch(todoAdded(inputChange));
     updateInputChange("");
     updateShowTodoForm(false);
   };

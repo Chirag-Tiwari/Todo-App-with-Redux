@@ -1,23 +1,23 @@
 import { FC } from "react";
-import { useSelector } from "react-redux";
-import Activities from "./Activities";
-import { doneSelector } from "./Selectors";
+import { connect, useSelector } from "react-redux";
+import TodoActivities from "./TodoActivities";
+import { doneSelector, undoneSelector } from "./Selectors";
+import { state } from "./Store";
+import { todo } from "./models/Todo";
 
-type TodoListProps = {};
+type TodoListProps = { todos: todo[] };
 
-const TodoList: FC<TodoListProps> = () => {
-  const list = useSelector(doneSelector);
-  console.log("list", list);
+const TodoList: FC<TodoListProps> = ({ todos }) => {
+  // const list = useSelector(doneSelector);
+
+  // console.log("list", list);
   return (
     <div>
-      <h2 className="text-lg font-medium leading-6 text-gray-900">
-        Things to do
-      </h2>
       <div className="space-y-2 mt-5">
-        {list.map((element: any) => (
-          <Activities
+        {todos.map((element: todo) => (
+          <TodoActivities
             data={element.title}
-            checked={false}
+            checked={!element.checked}
             id={element.id}
             key={element.id}
           />
@@ -30,3 +30,17 @@ const TodoList: FC<TodoListProps> = () => {
 TodoList.defaultProps = {};
 
 export default TodoList;
+
+const inCompleteMapper = (s: state) => {
+  return { todos: doneSelector(s) };
+};
+
+const completeMapper = (s: state) => {
+  return { todos: undoneSelector(s) };
+};
+
+const inCompleteListCreator = connect(inCompleteMapper);
+const completeListCreator = connect(completeMapper);
+
+export const MyTodoList = inCompleteListCreator(TodoList);
+export const DoneList = completeListCreator(TodoList);

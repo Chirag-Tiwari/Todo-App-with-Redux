@@ -1,18 +1,19 @@
 import { uniqueId } from "lodash";
+export const TODO_ADDED = "todo added";
+export const TODO_MARKED_DONE = "todo marked done";
+export const TODO_MARKED_UNDONE = "todo marked undone";
 
-export const TODO_ADDED = (data: string) => {
+export const todoAdded = (data: string) => {
   return {
-    type: "todo added",
+    type: TODO_ADDED,
     payload: { id: +uniqueId(), title: data, checked: true },
   };
 };
 
-export const TODO_MARKED_DONE = (id: number) => {
-  return { type: "todo marked done", payload: id };
+export const todoMarkedDone = (id: number) => {
+  return { type: TODO_MARKED_DONE, payload: id };
 };
 
-export const TODO_MARKED_UNDONE = (id: number) => {
-  return { type: "todo marked undone", payload: id };
+export const todoMarkedUndone = (id: number) => {
+  return { type: TODO_MARKED_UNDONE, payload: id };
 };
-// export const TODO_MARKED_DONE = "todo marked done";
-// export const TODO_MARKED_UNDONE = "todo marked undone";

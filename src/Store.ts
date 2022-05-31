@@ -13,11 +13,11 @@ const reducer: Reducer<state> = (
   action
 ) => {
   switch (action.type) {
-    case "todo added": {
+    case TODO_ADDED: {
       const newTodoArray = [...currentState.todos, action.payload];
       return { ...currentState, todos: newTodoArray };
     }
-    case "todo marked done": {
+    case TODO_MARKED_DONE: {
       const newTodoArray = currentState.todos.map((t) => {
         if (t.id === action.payload) {
           return { ...t, checked: true };
@@ -26,7 +26,7 @@ const reducer: Reducer<state> = (
       });
       return { ...currentState, todos: newTodoArray };
     }
-    case "todo marked undone": {
+    case TODO_MARKED_UNDONE: {
       const newTodoArray = currentState.todos.map((t) => {
         if (t.id === action.payload) {
           return { ...t, checked: false };
