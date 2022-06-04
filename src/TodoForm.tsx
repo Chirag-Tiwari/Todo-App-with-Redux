@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { todoAdded } from "./Actions";
 import Button from "./Button";
 
-type TodoFormProps = {};
+type TodoFormProps = {
+  // onSubmit: (title: string) => void;
+};
 
-const TodoForm: FC<TodoFormProps> = () => {
+const TodoForm: FC<TodoFormProps> = ({}) => {
   const [inputChange, updateInputChange] = useState<any>();
   const [showTodoForm, updateShowTodoForm] = useState<boolean>(false);
+
+  // const handleChange = () => {
+  //   onSubmit;
+  // };
+
   const isTodoForm = () => {
     updateShowTodoForm(true);
   };
@@ -58,3 +65,8 @@ const TodoForm: FC<TodoFormProps> = () => {
 TodoForm.defaultProps = {};
 
 export default TodoForm;
+
+// const dispatchMapper = { onsubmit: todoAdded };
+// const addTodo = connect(undefined, dispatchMapper);
+// const TodoForm = addTodo(TodoForm);
+// export default TodoForm;

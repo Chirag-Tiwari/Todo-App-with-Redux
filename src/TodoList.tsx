@@ -4,10 +4,14 @@ import TodoActivities from "./TodoActivities";
 import { doneSelector, undoneSelector } from "./Selectors";
 import { state } from "./Store";
 import { todo } from "./models/Todo";
+import { todoMarkedDone } from "./Actions";
 
-type TodoListProps = { todos: todo[] };
+type TodoListProps = {
+  todos: todo[];
+  onStatusChange: (id: number, checked: boolean) => void;
+};
 
-const TodoList: FC<TodoListProps> = ({ todos }) => {
+const TodoList: FC<TodoListProps> = ({ todos, onStatusChange }) => {
   // const list = useSelector(doneSelector);
 
   // console.log("list", list);
@@ -16,9 +20,8 @@ const TodoList: FC<TodoListProps> = ({ todos }) => {
       <div className="space-y-2 mt-5">
         {todos.map((element: todo) => (
           <TodoActivities
-            data={element.title}
-            checked={!element.checked}
-            id={element.id}
+            onStatusChange={onStatusChange}
+            todo={element}
             key={element.id}
           />
         ))}
@@ -32,15 +35,17 @@ TodoList.defaultProps = {};
 export default TodoList;
 
 const inCompleteMapper = (s: state) => {
-  return { todos: doneSelector(s) };
-};
-
-const completeMapper = (s: state) => {
   return { todos: undoneSelector(s) };
 };
 
-const inCompleteListCreator = connect(inCompleteMapper);
-const completeListCreator = connect(completeMapper);
+const completeMapper = (s: state) => {
+  return { todos: doneSelector(s) };
+};
+
+const dispatchMapper = { onStatusChange: todoMarkedDone };
+
+const inCompleteListCreator = connect(inCompleteMapper, dispatchMapper);
+const completeListCreator = connect(completeMapper, dispatchMapper);
 
 export const MyTodoList = inCompleteListCreator(TodoList);
 export const DoneList = completeListCreator(TodoList);

@@ -18,23 +18,25 @@ const reducer: Reducer<state> = (
       return { ...currentState, todos: newTodoArray };
     }
     case TODO_MARKED_DONE: {
+      const { id, checked } = action.payload;
       const newTodoArray = currentState.todos.map((t) => {
-        if (t.id === action.payload) {
-          return { ...t, checked: true };
+        if (t.id === id) {
+          return { ...t, checked: checked };
         }
         return t;
       });
       return { ...currentState, todos: newTodoArray };
     }
-    case TODO_MARKED_UNDONE: {
-      const newTodoArray = currentState.todos.map((t) => {
-        if (t.id === action.payload) {
-          return { ...t, checked: false };
-        }
-        return t;
-      });
-      return { ...currentState, todos: newTodoArray };
-    }
+    // case TODO_MARKED_UNDONE: {
+    //   const newTodoArray = currentState.todos.map((t) => {
+    //     if (t.id === action.payload) {
+    //       return { ...t, checked: false };
+    //     }
+    //     return t;
+    //   }
+    //   );
+    //   return { ...currentState, todos: newTodoArray };
+    // }
     default: {
       return currentState;
     }
