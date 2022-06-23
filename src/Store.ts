@@ -3,7 +3,7 @@ import { TODO_ADDED, TODO_MARKED_DONE, TODO_MARKED_UNDONE } from "./Actions";
 import { todo } from "./models/Todo";
 
 export type state = {
-  todos: todo[];
+  todos: { [id: number]: todo };
 };
 
 const initialState: state = { todos: [] };
@@ -14,18 +14,29 @@ const reducer: Reducer<state> = (
 ) => {
   switch (action.type) {
     case TODO_ADDED: {
-      const newTodoArray = [...currentState.todos, action.payload];
-      return { ...currentState, todos: newTodoArray };
+      const todo: todo = action.payload;
+
+      // const newTodoArray = [...currentState.todos, todo];
+      return {
+        ...currentState,
+        todos: { ...currentState.todos, [todo.id]: todo },
+      };
     }
     case TODO_MARKED_DONE: {
       const { id, checked } = action.payload;
-      const newTodoArray = currentState.todos.map((t) => {
-        if (t.id === id) {
-          return { ...t, checked: checked };
-        }
-        return t;
-      });
-      return { ...currentState, todos: newTodoArray };
+      // const newTodoArray = currentState.todos.map((t) => {
+      //   if (t.id === id) {
+      //     return { ...t, checked: checked };
+      //   }
+      //   return t;
+      // });
+      return {
+        ...currentState,
+        todos: {
+          ...currentState.todos,
+          [id]: { ...currentState.todos[id], checked: checked },
+        },
+      };
     }
     // case TODO_MARKED_UNDONE: {
     //   const newTodoArray = currentState.todos.map((t) => {

@@ -22,7 +22,6 @@ const TodoActivities: FC<TodoActivitiesProps> = ({ todo, onStatusChange }) => {
 
   return (
     <div>
-      {" "}
       <div className="flex space-x-2">
         <input
           key={id}
@@ -33,7 +32,7 @@ const TodoActivities: FC<TodoActivitiesProps> = ({ todo, onStatusChange }) => {
         />
         <span className={"font-bold " + (checked && "line-through ")}>
           {title}
-        </span>{" "}
+        </span>
         <RiDeleteBin5Fill className="mt-1" />
       </div>
     </div>

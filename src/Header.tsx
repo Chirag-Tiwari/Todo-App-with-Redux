@@ -6,8 +6,8 @@ import { doneCounter, unDoneCounter } from "./Selectors";
 type HeaderProps = {};
 
 const Header: FC<HeaderProps> = () => {
-  const todoCount = useSelector(doneCounter);
-  const doneCount = useSelector(unDoneCounter);
+  const todoCount = useSelector(unDoneCounter);
+  const doneCount = useSelector(doneCounter);
 
   return (
     <div className="flex justify-evenly border border-gray-700 p-2">
