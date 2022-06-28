@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { connect, useSelector } from "react-redux";
 import TodoActivities from "./TodoActivities";
-import { doneSelector, undoneSelector } from "./Selectors";
-import { state } from "./Store";
-import { todo } from "./models/Todo";
-import { todoMarkedDone } from "./Actions";
+import { doneSelector, undoneSelector } from "../Selectors";
+import { state } from "../Store";
+import { todo } from "../models/Todo";
+import { todoMarkedDone } from "../actions/TodoAction";
 
 type TodoListProps = {
   todos: todo[];

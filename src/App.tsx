@@ -1,7 +1,8 @@
-import TodoPage from "./TodoPage";
+import TodoPage from "./components/TodoPage";
+import UsersPage from "./components/UsersPage";
 import { uniqueId } from "lodash";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./Header";
+import Header from "./components/Header";
 
 const id = uniqueId();
 console.log("id is ", id);
@@ -12,11 +13,9 @@ function App() {
       <BrowserRouter>
         <Header />
         <div className="mx-auto max-w-7xl py-10">
-          <h1 className="text-3xl font-bold leading-tight text-gray-900">
-            Things to get done
-          </h1>
           <Routes>
             <Route path="/" element={<TodoPage />} />
+            <Route path="/userPage" element={<UsersPage />} />
           </Routes>
         </div>
       </BrowserRouter>

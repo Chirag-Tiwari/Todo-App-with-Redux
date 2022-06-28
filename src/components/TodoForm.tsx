@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { FC } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { todoAdded } from "./Actions";
+import { todoAdded } from "../actions/TodoAction";
 import Button from "./Button";
 
 type TodoFormProps = {
@@ -9,7 +9,7 @@ type TodoFormProps = {
 };
 
 const TodoForm: FC<TodoFormProps> = ({}) => {
-  const [inputChange, updateInputChange] = useState<any>();
+  const [inputChange, updateInputChange] = useState("");
   const [showTodoForm, updateShowTodoForm] = useState<boolean>(false);
 
   // const handleChange = () => {
@@ -24,7 +24,7 @@ const TodoForm: FC<TodoFormProps> = ({}) => {
     updateShowTodoForm(false);
   };
 
-  const changeInput = (event: any) => {
+  const changeInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateInputChange(event.target.value);
   };
 

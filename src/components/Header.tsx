@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { doneCounter, unDoneCounter } from "./Selectors";
+import { doneCounter, unDoneCounter } from "../Selectors";
 
 type HeaderProps = {};
 
@@ -16,12 +16,13 @@ const Header: FC<HeaderProps> = () => {
       </Link>
       <h1 className="italic font-bold">Todo Count:{todoCount}</h1>
       <h1 className="italic font-bold">Done Count:{doneCount}</h1>
-      {/* <Link
-        to="/upgrade"
+
+      <Link
+        to="/userPage"
         className="border border-gray-500 px-4 py-1 rounded-md hover:bg-gray-200"
       >
-        Upgrade
-      </Link> */}
+        User
+      </Link>
     </div>
   );
 };

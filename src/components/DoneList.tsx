@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import TodoActivities from "./TodoActivities";
-import { undoneSelector } from "./Selectors";
-import { todo } from "./models/Todo";
+import { undoneSelector } from "../Selectors";
+import { todo } from "../models/Todo";
 
 type DoneListProps = {
   todos: todo[];

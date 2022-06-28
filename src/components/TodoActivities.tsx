@@ -1,8 +1,6 @@
 import { FC, useCallback } from "react";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import { connect, useDispatch } from "react-redux";
-import { todoMarkedDone } from "./Actions";
-import { todo } from "./models/Todo";
+import { todo } from "../models/Todo";
 
 type TodoActivitiesProps = {
   todo: todo;
