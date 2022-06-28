@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { connect, useSelector } from "react-redux";
 import TodoActivities from "./TodoActivities";
-import { doneSelector, undoneSelector } from "../Selectors";
+import { doneSelector, undoneSelector } from "../selectors/TodoSelector";
 import { state } from "../Store";
 import { todo } from "../models/Todo";
 import { todoMarkedDone } from "../actions/TodoAction";

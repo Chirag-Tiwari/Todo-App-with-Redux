@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { doneCounter, unDoneCounter } from "../Selectors";
+import { doneCounter, unDoneCounter } from "../selectors/TodoSelector";
 
 type HeaderProps = {};
 

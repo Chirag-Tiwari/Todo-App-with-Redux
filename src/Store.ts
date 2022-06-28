@@ -1,11 +1,16 @@
 import { createStore, Reducer } from "redux";
 import { initialTodoState, todoReducer, todoState } from "./states/todo";
+import { initialUserState, userReducer, userState } from "./states/Users";
 
 export type state = {
   todos: todoState;
+  users: userState;
 };
 
-const initialState: state = { todos: initialTodoState };
+const initialState: state = {
+  todos: initialTodoState,
+  users: initialUserState,
+};
 
 const reducer: Reducer<state> = (
   currentState: state = initialState,
@@ -13,6 +18,7 @@ const reducer: Reducer<state> = (
 ) => {
   return {
     todos: todoReducer(currentState.todos, action),
+    users: userReducer(currentState.users, action),
   };
 };
 
