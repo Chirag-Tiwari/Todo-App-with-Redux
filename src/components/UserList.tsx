@@ -1,13 +1,18 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { connect } from "react-redux";
+import { fetchStudents } from "../actions/Students";
 import { user } from "../models/User";
 import { userSelector } from "../selectors/UserSelector";
 import { state } from "../Store";
 import UserLayOut from "./UserLayOut";
 
-type UserListProps = { users: user[] };
+type UserListProps = { users: user[]; getStudents: () => any };
 
-const UserList: FC<UserListProps> = ({ users }) => {
+const UserList: FC<UserListProps> = ({ users, getStudents }) => {
+  useEffect(() => {
+    getStudents();
+  }, []);
+
   return (
     <div className="space-y-2">
       {users.map((u) => (
@@ -27,4 +32,6 @@ const mapStateToProps = (s: state) => {
   };
 };
 
-export const UsersList = connect(mapStateToProps)(UserList);
+const mapDispatchToProps = { getStudents: fetchStudents };
+
+export const UsersList = connect(mapStateToProps, mapDispatchToProps)(UserList);
